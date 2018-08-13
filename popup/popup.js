@@ -22,9 +22,9 @@ function postScore() {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         avgScore = JSON.parse(xhr.responseText).score;
-                        eScore.innerHTML = avgScore.toFixed(2);
-                        eUserNum.innerHTML = JSON.parse(xhr.responseText).count;
-                        eStatus.innerHTML = "Upload OK.";
+                        eScore.textContent = avgScore.toFixed(2);
+                        eUserNum.textContent = JSON.parse(xhr.responseText).count;
+                        eStatus.textContent = "Upload OK.";
                         eStatus.style.color = "green";
 
                         if (avgScore >= 4) {
@@ -36,7 +36,7 @@ function postScore() {
                         }
                     }
                     else {
-                        eStatus.innerHTML = "Sending your score...";
+                        eStatus.textContent = "Sending your score...";
                         eStatus.style.color = "blue";
                     }
                 };
@@ -46,11 +46,10 @@ function postScore() {
                 xhr.send(JSON.stringify(data));
             });
         }
-
     }
 
     // Submit without checking
-    eStatus.innerHTML = "Error: you should select the score first.";
+    eStatus.textContent = "Error: you should select the score first.";
     eStatus.style.color = "red";
 }
 
@@ -62,7 +61,7 @@ function getScore() {
     let eUserNum = document.getElementById("user_n");
     browser.tabs.query(query, (tabs) => {
         let eHost = document.getElementById("host");
-        eHost.innerHTML = getHostFromUrl(tabs[0].url);
+        eHost.textContent = getHostFromUrl(tabs[0].url);
 
         let data = {
             host: getHostFromUrl(tabs[0].url),
@@ -73,13 +72,13 @@ function getScore() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 avgScore = JSON.parse(xhr.responseText).score;
                 if (avgScore == null) {
-                    eStatus.innerHTML = "No score fetched.";
+                    eStatus.textContent = "No score fetched.";
                     eStatus.style.color = "purple";
                     return;
                 }
-                eScore.innerHTML = avgScore.toFixed(2);
-                eUserNum.innerHTML = JSON.parse(xhr.responseText).count;
-                eStatus.innerHTML = "Ready.";
+                eScore.textContent = avgScore.toFixed(2);
+                eUserNum.textContent = JSON.parse(xhr.responseText).count;
+                eStatus.textContent = "Ready.";
                 eStatus.style.color = "green";
 
                 if (avgScore >= 4) {
@@ -91,7 +90,7 @@ function getScore() {
                 }
             }
             else {
-                eStatus.innerHTML = "Fetching newest score...";
+                eStatus.textContent = "Fetching newest score...";
                 eStatus.style.color = "blue";
             }
         };
