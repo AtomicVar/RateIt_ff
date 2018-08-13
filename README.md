@@ -12,7 +12,7 @@ A web extension for rating any websites.
 
 ## Installation
 
-...
+[AMO](https://addons.mozilla.org/addon/rateit/)
 
 ## Port for Chrome
 
