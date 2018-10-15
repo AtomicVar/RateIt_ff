@@ -1,8 +1,8 @@
 {
     "name": "RateIt",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Rate the site.",
-    "homepage_url": "https://drg1998.cn/",
+    "homepage_url": "https://github.com/ZJUGuoShuai/RateIt_ff",
 	"icons": {
       "48": "icons/icon48.png"
     },
